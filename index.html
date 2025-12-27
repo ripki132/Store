@@ -1,0 +1,1931 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripky STORE | JOKI GAME FISH IT PREMIUM</title>
+    
+    <meta name="description" content="Jasa Joki Game Fishing Premium. Joki Rod, Baits, dan Harian dengan proses cepat dan aman.">
+    <meta name="theme-color" content="#0A2A43">
+
+    <link rel="icon" type="image/jpg" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Ripky Store Game Store",
+      "url": "https://ngoprek.xyz/ig",
+      "logo": "https://ngoprek.xyz/u/r/rs.jpg"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- OPTIMASI PERFORMANCE --- */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* --- VARIABLES TEMA LAUT GELAP AQUA --- */
+        :root {
+            --bg-dark: #0A1A2A;
+            --bg-surface: #0A2A43;
+            --deep-ocean: #051622;
+            --ocean-blue: #093145;
+            --aqua-primary: #00E0FF;
+            --aqua-secondary: #00FFD4;
+            --aqua-accent: #00B4D8;
+            --coral: #FF6B6B;
+            --seaweed: #2ECC71;
+            --sand: #D4A76A;
+            --gold: #FFD166;
+            --text-main: #FFFFFF;
+            --text-muted: #A8DADC;
+            --wave-color: rgba(0, 224, 255, 0.1);
+            
+            /* Category Colors - Tema Laut */
+            --rod-color: #00E0FF;
+            --bait-color: #00FFD4;
+            --daily-color: #00B4D8;
+
+            /* Glass Effect */
+            --glass-bg: rgba(10, 42, 67, 0.7);
+            --glass-border: 1px solid rgba(0, 224, 255, 0.3);
+            --glass-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            --blur: blur(15px);
+        }
+
+        /* --- BODY & FONTS --- */
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Optimasi untuk performa animasi */
+        .optimized-animation {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+            will-change: transform, opacity;
+        }
+
+        /* --- SIMPLE BUBBLE LOADING SCREEN --- */
+        #bubble-loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #051622, #0A2A43);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+            transform: translateZ(0);
+        }
+
+        #bubble-loading.loaded {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Bubble Animation Only */
+        .bubbles-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .bubble-load {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 224, 255, 0.4), rgba(0, 255, 212, 0.2));
+            border-radius: 50%;
+            animation: bubbleFloat linear infinite;
+            opacity: 0.6;
+            filter: blur(1px);
+        }
+
+        @keyframes bubbleFloat {
+            0% {
+                transform: translateY(100vh) translateX(var(--startX)) scale(0.2);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) translateX(var(--endX)) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Loading Content - Minimal */
+        .loading-center {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            width: min(400px, 90vw);
+            padding: 30px;
+            background: rgba(10, 42, 67, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 2px solid rgba(0, 224, 255, 0.3);
+            box-shadow: 0 0 50px rgba(0, 224, 255, 0.2);
+        }
+
+        .loading-logo {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--aqua-primary), var(--aqua-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .loading-text {
+            color: var(--aqua-primary);
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            min-height: 24px;
+        }
+
+        /* Simple Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(0, 224, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 224, 255, 0.3);
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--aqua-primary), var(--aqua-secondary));
+            border-radius: 4px;
+            transition: width 0.1s linear;
+        }
+
+        /* --- WELCOME POPUP (CLEAN DESIGN) --- */
+        #welcome-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 22, 34, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 99998;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+            padding: 20px;
+        }
+
+        #welcome-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-wrapper {
+            max-width: 600px;
+            width: 90%;
+            background: linear-gradient(135deg, rgba(10, 42, 67, 0.95), rgba(9, 49, 69, 0.95));
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid var(--aqua-primary);
+            box-shadow: 0 0 60px rgba(0, 224, 255, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.5s ease;
+            position: relative;
+        }
+
+        #welcome-popup.active .popup-wrapper {
+            transform: scale(1);
+        }
+
+        /* Image Top - Large & Perfect */
+        .popup-image-container {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .popup-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-bottom: 3px solid var(--aqua-primary);
+        }
+
+        /* Description Bottom */
+        .popup-content {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .popup-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            background: linear-gradient(45deg, var(--aqua-primary), var(--aqua-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .popup-description {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 25px;
+            max-width: 700px;
+        }
+
+        .popup-description strong {
+            color: var(--aqua-primary);
+        }
+
+        /* Close button visible but not prominent */
+        .popup-close-text {
+            color: var(--aqua-secondary);
+            font-size: 0.9rem;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        /* Click outside to close hint */
+        .click-outside-hint {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: var(--aqua-secondary);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .click-outside-hint i {
+            margin-right: 8px;
+        }
+
+        /* --- REVIEWS SCROLLING ANIMATION IN FOOTER --- */
+        .reviews-footer {
+            background: linear-gradient(to right, rgba(10, 42, 67, 0.9), rgba(9, 49, 69, 0.9));
+            padding: 30px 0;
+            border-top: 2px solid var(--aqua-primary);
+            border-bottom: 2px solid var(--aqua-primary);
+            margin-top: 60px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .reviews-title {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--aqua-primary);
+            text-shadow: 0 0 15px rgba(0, 224, 255, 0.5);
+        }
+
+        .reviews-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            padding: 15px 0;
+        }
+
+        .reviews-track {
+            display: flex;
+            gap: 25px;
+            width: max-content;
+            animation: scrollReviews 35s linear infinite;
+            padding: 10px 0;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        .reviews-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollReviews {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-50% - 12.5px));
+            }
+        }
+
+        .review-card {
+            flex: 0 0 auto;
+            width: 300px;
+            background: rgba(10, 42, 67, 0.8);
+            border: 2px solid rgba(0, 224, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            transform: translateZ(0);
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--aqua-primary);
+            box-shadow: 0 10px 30px rgba(0, 224, 255, 0.2);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .reviewer-name {
+            font-weight: 700;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .review-rating {
+            display: flex;
+            gap: 3px;
+        }
+
+        .star {
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+
+        .star.half {
+            position: relative;
+            color: var(--gold);
+        }
+
+        .star.half::before {
+            content: '\f005';
+            position: absolute;
+            left: 0;
+            width: 50%;
+            overflow: hidden;
+            color: var(--gold);
+        }
+
+        .review-content {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .review-date {
+            color: #68869D;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            text-align: right;
+        }
+
+        /* Gradient overlay untuk efek fade */
+        .reviews-container::before,
+        .reviews-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .reviews-container::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-surface), transparent);
+        }
+
+        .reviews-container::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-surface), transparent);
+        }
+
+        /* --- WAVES BACKGROUND --- */
+        .waves-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            z-index: -1;
+            opacity: 0.3;
+            pointer-events: none;
+            transform: translateZ(0);
+        }
+
+        .wave-svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            opacity: 0.1;
+            animation: wave 20s linear infinite;
+            transform: translateZ(0);
+        }
+
+        .wave-svg:nth-child(2) {
+            animation: wave 25s linear infinite;
+            opacity: 0.05;
+            bottom: 10px;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4, .brand-font { 
+            font-family: 'Orbitron', sans-serif; 
+            letter-spacing: 1px;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--aqua-primary), var(--aqua-secondary), var(--aqua-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
+        }
+
+        .aqua-text {
+            color: var(--aqua-primary);
+            text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+        }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 24px; 
+        }
+        
+        section { 
+            padding: 80px 0; 
+            position: relative;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            position: fixed; 
+            top: 20px; 
+            left: 0; 
+            right: 0; 
+            z-index: 1000;
+            display: flex; 
+            justify-content: center;
+            transform: translateZ(0);
+        }
+        
+        .navbar-card {
+            background: rgba(10, 42, 67, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 224, 255, 0.4);
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            width: 90%;
+            max-width: 1200px;
+            justify-content: space-between;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .logo-image {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--aqua-primary);
+            box-shadow: 0 0 15px rgba(0, 224, 255, 0.3);
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--aqua-primary), var(--aqua-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            white-space: nowrap;
+        }
+        
+        .nav-links { 
+            display: flex; 
+            gap: 20px; 
+            list-style: none; 
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.9rem; 
+            transition: color 0.3s;
+            padding: 8px 15px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        
+        .nav-links a:hover { 
+            color: white; 
+            background: rgba(0, 224, 255, 0.15);
+        }
+        
+        .menu-toggle { 
+            display: none; 
+            color: white; 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+            flex-shrink: 0;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            text-align: center; 
+            padding: 120px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(0, 224, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 { 
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.2; 
+            margin-bottom: 25px; 
+            text-transform: uppercase;
+        }
+        
+        .hero p { 
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--text-muted); 
+            max-width: 700px; 
+            margin: 0 auto 40px;
+            padding: 0 20px;
+        }
+
+        /* Profile Logo di Hero */
+        .hero-logo-container {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-logo-card {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            background: rgba(10, 42, 67, 0.8);
+            border: 2px solid var(--aqua-primary);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0, 224, 255, 0.3);
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        .profile-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 3px solid var(--aqua-secondary);
+            box-shadow: 0 0 25px rgba(0, 224, 255, 0.4);
+        }
+
+        .btn {
+            padding: 16px 40px; 
+            border-radius: 50px; 
+            font-weight: 900; 
+            text-decoration: none;
+            transition: all 0.3s ease; 
+            text-transform: uppercase; 
+            font-size: 1rem; 
+            border: none; 
+            cursor: pointer;
+            display: inline-flex; 
+            align-items: center; 
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+            transform: translateZ(0);
+        }
+        
+        .btn-primary { 
+            background: linear-gradient(45deg, var(--aqua-primary), var(--aqua-accent));
+            color: var(--deep-ocean); 
+            box-shadow: 0 5px 25px rgba(0, 224, 255, 0.4);
+            border: 2px solid var(--aqua-secondary);
+        }
+        
+        .btn-primary:hover { 
+            transform: translateY(-3px) scale(1.03); 
+            box-shadow: 0 8px 35px rgba(0, 224, 255, 0.6);
+        }
+
+        /* --- CATEGORY TABS --- */
+        .category-wrapper {
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 15px;
+            margin-bottom: 60px; 
+            padding: 15px; 
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        .cat-chip {
+            padding: 10px 20px; 
+            background: rgba(10, 42, 67, 0.8); 
+            border: 2px solid var(--aqua-primary);
+            border-radius: 50px; 
+            color: white; 
+            text-decoration: none; 
+            font-size: 0.95rem;
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px;
+            backdrop-filter: blur(5px);
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        .cat-chip:hover, .cat-chip.active { 
+            background: linear-gradient(45deg, var(--aqua-primary), var(--aqua-secondary));
+            color: var(--deep-ocean); 
+            transform: translateY(-2px); 
+            box-shadow: 0 5px 20px rgba(0, 224, 255, 0.3);
+        }
+
+        /* --- CARDS & GRID --- */
+        .service-group-title {
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            margin: 40px 0 20px; 
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--aqua-primary);
+            font-family: 'Orbitron'; 
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .grid-container {
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 25px;
+            transform: translateZ(0);
+        }
+
+        .card {
+            background: var(--glass-bg); 
+            border: var(--glass-border); 
+            border-radius: 18px; 
+            padding: 25px;
+            position: relative; 
+            transition: all 0.3s ease; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column;
+            backdrop-filter: blur(5px);
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--aqua-primary), var(--aqua-secondary));
+        }
+        
+        .card:hover {
+            transform: translateY(-5px); 
+            border-color: var(--aqua-primary);
+            box-shadow: 0 15px 35px rgba(0, 224, 255, 0.15);
+        }
+
+        .card-badge {
+            position: absolute; 
+            top: 15px; 
+            right: 15px; 
+            padding: 5px 12px; 
+            border-radius: 8px;
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            z-index: 2; 
+            color: var(--deep-ocean);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .bg-gold { 
+            background: linear-gradient(45deg, var(--gold), #FFE082); 
+        }
+        
+        .bg-aqua { 
+            background: linear-gradient(45deg, var(--aqua-primary), var(--aqua-secondary));
+        }
+        
+        .bg-coral { 
+            background: linear-gradient(45deg, var(--coral), #FF8A8A);
+            color: white; 
+        }
+        
+        .bg-seaweed { 
+            background: linear-gradient(45deg, var(--seaweed), #5CE1E6);
+        }
+
+        .card h4 { 
+            font-size: 1.3rem; 
+            margin-bottom: 12px; 
+            color: white; 
+            font-family: 'Orbitron';
+        }
+        
+        .price { 
+            font-size: 1.8rem; 
+            font-weight: 900; 
+            color: var(--text-main); 
+            margin-bottom: 12px; 
+            display: block;
+            background: linear-gradient(45deg, var(--aqua-primary), var(--aqua-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .desc-text { 
+            font-size: 0.9rem; 
+            color: var(--text-muted); 
+            margin-bottom: 20px; 
+            line-height: 1.6;
+        }
+        
+        .feature-tags { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 6px; 
+            margin-bottom: 20px; 
+        }
+        
+        .tag { 
+            font-size: 0.7rem; 
+            padding: 4px 8px; 
+            background: rgba(0, 224, 255, 0.1); 
+            border-radius: 5px; 
+            color: var(--aqua-secondary);
+            border: 1px solid rgba(0, 224, 255, 0.2);
+        }
+
+        .btn-card {
+            width: 100%; 
+            padding: 12px; 
+            background: rgba(0, 224, 255, 0.1); 
+            border: 2px solid rgba(0, 224, 255, 0.3);
+            color: var(--aqua-primary); 
+            text-align: center; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            font-weight: 700;
+            transition: all 0.3s ease; 
+            margin-top: auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: translateZ(0);
+        }
+        
+        .btn-card:hover { 
+            background: var(--aqua-primary); 
+            color: var(--deep-ocean); 
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 224, 255, 0.3);
+        }
+
+        /* --- STYLING KHUSUS DAILY COUNTER --- */
+        .daily-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            background: rgba(0, 224, 255, 0.1);
+            padding: 10px;
+            border-radius: 12px;
+            border: 2px solid rgba(0, 224, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .btn-qty {
+            background: linear-gradient(45deg, var(--aqua-secondary), var(--aqua-primary));
+            color: var(--deep-ocean);
+            font-weight: bold;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            transform: translateZ(0);
+        }
+        
+        .btn-qty:hover { 
+            background: var(--aqua-primary); 
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--aqua-primary);
+        }
+
+        .input-days {
+            width: 50px;
+            text-align: center;
+            background: transparent;
+            border: 2px solid var(--aqua-primary);
+            color: var(--aqua-primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            padding: 4px;
+        }
+        
+        .input-days::-webkit-outer-spin-button,
+        .input-days::-webkit-inner-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+
+        .total-display {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--aqua-secondary);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        /* --- TERMINAL INFO --- */
+        .terminal-box {
+            background: rgba(10, 42, 67, 0.8); 
+            border: 2px solid var(--aqua-primary);
+            border-radius: 12px; 
+            overflow: hidden;
+            font-family: 'Courier New', monospace; 
+            margin-top: 40px;
+            backdrop-filter: blur(5px);
+            transform: translateZ(0);
+        }
+        
+        .terminal-header { 
+            background: rgba(10, 42, 67, 0.9); 
+            padding: 12px 15px; 
+            display: flex; 
+            gap: 8px; 
+            align-items: center;
+        }
+        
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot.red { background: var(--coral); } 
+        .dot.yellow { background: var(--gold); } 
+        .dot.green { background: var(--seaweed); }
+        
+        .terminal-body { 
+            padding: 25px; 
+            color: var(--text-muted); 
+            font-size: 0.95rem; 
+            line-height: 1.6;
+        }
+
+        /* --- FOOTER --- */
+        footer { 
+            background: linear-gradient(to top, #051622, #0A2A43); 
+            padding: 40px 0 20px; 
+            text-align: center; 
+            position: relative;
+        }
+
+        .footer-content {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+           justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+        .footer-logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--aqua-primary);
+        }
+
+        .footer-logo-text {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--aqua-primary), var(--aqua-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(0, 224, 255, 0.1);
+            border: 1px solid rgba(0, 224, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--aqua-primary);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--aqua-primary);
+            color: var(--deep-ocean);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 224, 255, 0.3);
+        }
+
+        .copyright {
+            color: #68869D;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(0, 224, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .navbar-card { 
+                width: 95%; 
+                padding: 8px 15px; 
+                gap: 15px;
+            }
+            
+            .logo-image {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .nav-links {
+                position: fixed; 
+                top: 80px; 
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%; 
+                background: rgba(10, 42, 67, 0.98);
+                border: 2px solid var(--aqua-primary);
+                border-radius: 15px; 
+                flex-direction: column; 
+                padding: 15px; 
+                gap: 10px; 
+                display: none;
+                backdrop-filter: blur(10px);
+                z-index: 1001;
+            }
+            
+            .nav-links.active { 
+                display: flex; 
+                animation: slideDown 0.3s ease;
+            }
+            
+            @keyframes slideDown {
+                from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+                to { opacity: 1; transform: translateX(-50%) translateY(0); }
+            }
+            
+            .menu-toggle { 
+                display: block; 
+            }
+            
+            .hero {
+                padding: 100px 0 40px;
+            }
+            
+            .profile-logo {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .cat-chip { 
+                font-size: 0.85rem; 
+                padding: 8px 15px; 
+            }
+            
+            /* Reviews Mobile */
+            .review-card {
+                width: 280px;
+            }
+            
+            .reviews-container::before,
+            .reviews-container::after {
+                width: 50px;
+            }
+            
+            .reviews-title {
+                font-size: 1.5rem;
+            }
+            
+            /* Popup Mobile */
+            .popup-wrapper {
+                width: 95%;
+                max-width: 500px;
+            }
+            
+            .popup-image-container {
+                height: 220px;
+            }
+            
+            .popup-content {
+                padding: 20px;
+            }
+            
+            .popup-title {
+                font-size: 1.7rem;
+            }
+            
+            .popup-description {
+                font-size: 0.95rem;
+            }
+            
+            .click-outside-hint {
+                bottom: -35px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 14px 30px;
+                font-size: 0.9rem;
+            }
+            
+            .profile-logo {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .review-card {
+                width: 260px;
+                padding: 15px;
+            }
+            
+            .popup-image-container {
+                height: 180px;
+            }
+            
+            .popup-title {
+                font-size: 1.5rem;
+            }
+            
+            .popup-description {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+        }
+
+        /* --- PERFORMANCE OPTIMIZATIONS --- */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            
+            .reviews-track {
+                animation: none !important;
+            }
+            
+            .bubble-load {
+                animation: none !important;
+            }
+        }
+
+    </style>
+</head>
+<body class="smooth-scroll">
+
+    <!-- SIMPLE BUBBLE LOADING SCREEN -->
+    <div id="bubble-loading">
+        <div class="bubbles-wrapper" id="bubbles-wrapper"></div>
+        
+        <!-- Loading Content -->
+        <div class="loading-center">
+            <div class="loading-logo">Ripky STORE</div>
+            <div class="loading-text" id="loading-text">> Memuat lingkungan bawah laut...</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WELCOME POPUP (CLEAN DESIGN) -->
+    <div id="welcome-popup">
+        <div class="popup-wrapper">
+            <!-- Image Top -->
+            <div class="popup-image-container">
+                <img src="popup.jpg" alt="Ripky Store Banner" class="popup-image">
+            </div>
+            
+            <!-- Description Bottom -->
+            <div class="popup-content">
+                <h2 class="popup-title">Selamat Datang!</h2>
+                
+                <div class="popup-description">
+                    Selamat datang di <strong>Ripky Store</strong> - Jasa Joki Game Fish It Premium terpercaya! 
+                    Dapatkan pengalaman gaming terbaik dengan layanan joki rod langka, umpan premium, 
+                    dan grinding harian yang aman dan terjamin. Tingkatkan progress game Anda sekarang juga!
+                </div>
+                
+                <div class="popup-close-text">Klik di luar popup untuk menutup</div>
+            </div>
+            
+            <!-- Click Outside Hint -->
+            <div class="click-outside-hint">
+                <i class="fas fa-mouse-pointer"></i> Klik area luar popup untuk menutup
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Elements -->
+    <div class="waves-container">
+        <svg class="wave-svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
+                  fill="var(--aqua-primary)"/>
+        </svg>
+        <svg class="wave-svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
+                  fill="var(--aqua-secondary)"/>
+        </svg>
+    </div>
+
+    <!-- MAIN WEBSITE CONTENT -->
+    <header>
+        <div class="navbar-card optimized-animation">
+            <a href="#" class="logo-container">
+                <img src="iklan.jpg" alt="Ripky Store Logo" class="logo-image">
+                <span class="logo-text">Ripky STORE</span>
+            </a>
+            <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="nav-ul">
+                <li><a href="#hero">Beranda</a></li>
+                <li><a href="#packages">Paket</a></li>
+                <li><a href="#reviews">Ulasan</a></li>
+                <li><a href="#info">Info</a></li>
+                <li><a href="#contact">Kontak</a></li>
+                <li><a href="https://ngoprek.xyz/contact" style="background: linear-gradient(45deg, var(--aqua-primary), var(--aqua-secondary)); color: var(--deep-ocean);">Support Admin</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="container" data-aos="fade-up">
+            
+            <div class="hero-logo-container">
+                <div class="profile-logo-card optimized-animation">
+                    <img src="iklan.jpg" alt="Official Partner" class="profile-logo">
+                </div>
+            </div>
+            
+            <h1><span class="gradient-text">FISH IT</span><br>PREMIUM JOKI</h1>
+            <p>Dapatkan Rod Langka, Umpan Terbaik, dan Layanan Joki Harian dengan cepat dan aman. Tingkatkan progress game Fish It Anda sekarang!</p>
+            <a href="#packages" class="btn btn-primary optimized-animation">Lihat Daftar Item <i class="fas fa-arrow-down"></i></a>
+        </div>
+    </section>
+
+    <section id="packages">
+        <div class="container">
+            <div class="category-wrapper optimized-animation">
+                <a href="#cat-rod" class="cat-chip active"><i class="fa-solid fa-wand-sparkles"></i> Joki Rod</a>
+                <a href="#cat-bait" class="cat-chip"><i class="fa-solid fa-worm"></i> Joki Baits</a>
+                <a href="#cat-daily" class="cat-chip"><i class="fa-solid fa-calendar-check"></i> Joki Harian</a>
+            </div>
+
+            <div id="cat-rod">
+                <div class="service-group-title">
+                    <i class="fa-solid fa-fish-fins fa-2x aqua-text"></i> <h3 class="aqua-text">JOKI ROD (PANCINGAN)</h3>
+                </div>
+                <div class="grid-container">
+                    
+                    <div class="card rod optimized-animation" data-aos="fade-up">
+                        <div class="card-badge bg-aqua">BEST DEAL</div>
+                        <h4>HAZMAT ROD</h4>
+                        <span class="price">Rp 10.000</span>
+                        <div class="feature-tags">
+                            <span class="tag"><i class="fa-solid fa-wand-sparkles"></i> Luck: 380℅ | Speed: 32℅ | Weight: 300K k. Kg</span>
+                        </div>
+                        <p class="desc-text">Jika kamu membeli jasa joki HAZMAT ROD , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya.</p>
+                        <a href="https://wa.me/6282116359852?text=Halo%20Admin%2C%20saya%20mau%20beli%20HAZMAT%20ROD%20seharga%2010K.%20Masih%20ready%3F" target="_blank" class="btn-card">Beli Rod</a>
+                    </div>
+
+                    <div class="card rod optimized-animation" data-aos="fade-up" data-aos-delay="100">
+                        <h4>ARES ROD</h4>
+                        <span class="price">Rp 20.000</span>
+                        <div class="feature-tags">
+                            <span class="tag"><i class="fa-brands fa-hotjar"></i> Luck: 455℅. | Speed: 56℅ | Weight: 400K k. Kg</span>
+                        </div>
+                        <p class="desc-text">Jika kamu membeli jasa joki ARES ROD , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya.</p>
+                        <a href="https://wa.me/6282116359852?text=Halo%20Admin%2C%20saya%20mau%20beli%20ARES%20ROD%20seharga%2020K.%20Masih%20ready%3F" target="_blank" class="btn-card">Beli Rod</a>
+                    </div>
+
+                    <div class="card rod optimized-animation" data-aos="fade-up" data-aos-delay="200">
+                        <h4>ANGLER ROD</h4>
+                        <span class="price">Rp 35.000</span>
+                        <div class="feature-tags">
+                            <span class="tag"><i class="fa-solid fa-fish-fins"></i> Luck: 530℅. | Speed: 71℅ | Weight: 500K k. Kg</span>
+                        </div>
+                        <p class="desc-text">Jika kamu membeli jasa joki ANGLER ROD , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya.</p>
+                        <a href="https://wa.me/6282116359852?text=Halo%20Admin%2C%20saya%20mau%20beli%20ANGLER%20ROD%20seharga%2035K.%20Masih%20ready%3F" target="_blank" class="btn-card">Beli Rod</a>
+                    </div>
+
+                    <div class="card rod optimized-animation" data-aos="fade-up" data-aos-delay="100">
+                        <h4>BAMBOO ROD</h4>
+                        <span class="price">Rp 40.000</span>
+                        <div class="feature-tags">
+                            <span class="tag"><i class="fa-solid fa-leaf"></i> Luck: 760℅. | Speed: 98℅ | Weight: 500K k. Kg</span>
+                        </div>
+                        <p class="desc-text">Jika kamu membeli jasa joki BAMBOO ROD , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya.</p>
+                        <a href="https://wa.me/6282116359852?text=Halo%20Admin%2C%20saya%20mau%20beli%20BAMBOO%20ROD%20seharga%2040K.%20Masih%20ready%3F" target="_blank" class="btn-card">Beli Rod</a>
+                    </div>
+
+                    <div class="card rod optimized-animation" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-badge bg-coral">POPULER</div>
+                        <h4>GHOSTFIN ROD</h4>
+                        <span class="price">Rp 60.000</span>
+                        <div class="feature-tags">
+                            <span class="tag"><i class="fa-solid fa-ghost"></i> Luck: 610℅. | Speed: 118℅ | Weight: 600K k. Kg</span>
+                        </div>
+                        <p class="desc-text">Jika kamu membeli jasa joki GHOSTFIN ROD , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya.</p>
+                        <a href="https://wa.me/6282116359852?text=Halo%20Admin%2C%20saya%20mau%20beli%20GHOSTFIN%20ROD%20seharga%2060K.%20Masih%20ready%3F" target="_blank" class="btn-card">Beli Rod</a>
+                    </div>
+
+                    <div class="card rod optimized-animation" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-badge bg-gold">LEGENDARY</div>
+                        <h4>ELEMENT ROD</h4>
+                        <span class="price">Rp 120.000</span>
+                        <div class="feature-tags">
+                            <span class="tag"><i class="fa-solid fa-bolt"></i> Luck: 1111℅. | Speed: 130℅ | Weight: 900K k. Kg</span>
+                        </div>
+                        <p class="desc-text">Jika kamu membeli jasa joki ELEMENT ROD , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya.</p>
+                        <a href="https://wa.me/6282116359852?text=Halo%20Admin%2C%20saya%20mau%20beli%20ELEMENT%20ROD%20seharga%20120K.%20Masih%20ready%3F" target="_blank" class="btn-card">Beli Rod</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="cat-bait">
+                <div class="service-group-title">
+                    <i class="fa-solid fa-worm fa-2x aqua-text"></i> <h3 class="aqua-text">JOKI BAITS (UMPAN)</h3>
+                </div>
+                <div class="grid-container">
+                    
+                    <div class="card bait optimized-animation" data-aos="fade-up">
+                        <h4>CHROMA BAIT</h4>
+                        <span class="price">Rp 2.000</span>
+                        <div class="feature-tags"><span class="tag"><i class="fa-solid fa-worm"></i> Luck: 100℅</span></div>
+                        <p class="desc-text">Jika kamu membeli jasa joki CHROMA BAIT , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya.</p>
+                        <a href="https://wa.me/6282116359852?text=Halo%20Admin%2C%20saya%20mau%20beli%20CHROMA%20BAIT%20seharga%202K" target="_blank" class="btn-card">Beli Umpan</a>
+                    </div>
+
+                    <div class="card bait optimized-animation" data-aos="fade-up" data-aos-delay="100">
+                        <h4>DARK MATTER BAIT</h4>
+                        <span class="price">Rp 5.000</span>
+                        <div class="feature-tags"><span class="tag"><i class="fa-solid fa-moon"></i> Luck: 170℅. | Speed: 5℅ | SHINY CHANCE 5℅</span></div>
+                        <p class="desc-text">Jika kamu membeli jasa joki DARK MATTER BAIT , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya.</p>
+                        <a href="https://wa.me/6282116359852?text=Halo%20Admin%2C%20saya%20mau%20beli%20DARK%20MATTER%20seharga%205K" target="_blank" class="btn-card">Beli Umpan</a>
+                    </div>
+
+                    <div class="card bait optimized-animation" data-aos="fade-up" data-aos-delay="200">
+                        <h4>CORRUPT BAIT</h4>
+                        <span class="price">Rp 10.000</span>
+                        <div class="feature-tags"><span class="tag"><i class="fa-solid fa-skull"></i> Luck: 220℅. | MUTATION CHANCE: 10℅ | SHINY CHANCE: 10℅</span></div>
+                        <p class="desc-text">Jika kamu membeli jasa joki CORRUPT BAIT , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya.</p>
+                        <a href="https://wa.me/6282116359852?text=Halo%20Admin%2C%20saya%20mau%20beli%20CORRUPT%20BAIT%20seharga%2010K" target="_blank" class="btn-card">Beli Umpan</a>
+                    </div>
+
+                    <div class="card bait optimized-animation" data-aos="fade-up" data-aos-delay="100">
+                        <h4>AETHER BAIT</h4>
+                        <span class="price">Rp 15.000</span>
+                        <div class="feature-tags"><span class="tag"><i class="fa-solid fa-wind"></i> Luck: 260℅. | MUTATION CHANCE: 15℅ | SHINY CHANCE: 5℅</span></div>
+                        <p class="desc-text">Jika kamu membeli jasa joki AETHER BAIT , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya.</p>
+                        <a href="https://wa.me/6282116359852?text=Halo%20Admin%2C%20saya%20mau%20beli%20AETHER%20BAIT%20seharga%2015K" target="_blank" class="btn-card">Beli Umpan</a>
+                    </div>
+
+                    <div class="card bait optimized-animation" data-aos="fade-up" data-aos-delay="200">
+                        <h4>FLORAL BAIT</h4>
+                        <span class="price">Rp 25.000</span>
+                        <div class="feature-tags"><span class="tag"><i class="fa-brands fa-pagelines"></i> Luck: 320℅. | MUTATION MULTIPL: x2.4</span></div>
+                        <p class="desc-text">Jika kamu membeli jasa joki FLORAL BAIT , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya.</p>
+                        <a href="https://wa.me/6282116359852?text=Halo%20Admin%2C%20saya%20mau%20beli%20FLORAL%20BAIT%20seharga%2025K" target="_blank" class="btn-card">Beli Umpan</a>
+                    </div>
+
+                    <div class="card bait optimized-animation" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-badge bg-seaweed">MYTHICAL</div>
+                        <h4>SINGULARITY BAIT</h4>
+                        <span class="price">Rp 35.000</span>
+                        <div class="feature-tags"><span class="tag"><i class="fa-solid fa-circle-nodes"></i> Luck: 380℅. | MUTATION CHANCE: 20℅</span></div>
+                        <p class="desc-text">Jika kamu membeli jasa joki SINGULARITY BAIT , kamu akan mendapatkan ares rod yang awalnya rod kamu kurang bagus kini menjadi lebih baik dari sebelumnya.</p>
+                        <a href="https://wa.me/6282116359852?text=Halo%20Admin%2C%20saya%20mau%20beli%20SINGULARITY%20BAIT%20seharga%2035K" target="_blank" class="btn-card">Beli Umpan</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="cat-daily">
+                <div class="service-group-title">
+                    <i class="fa-solid fa-calendar-days fa-2x aqua-text"></i> <h3 class="aqua-text">JOKI HARIAN</h3>
+                </div>
+                <div class="grid-container">
+                    <div class="card daily optimized-animation" data-aos="fade-up" style="grid-column: 1/-1; max-width: 500px; margin: 0 auto;">
+                        <div class="card-badge bg-aqua">LAYANAN</div>
+                        <h4>JOKI GRINDING HARIAN</h4>
+                        <span class="price">Rp 5.000 <span style="font-size:1.1rem; color:#68869D; font-weight:400;">/ Hari</span></span>
+                        
+                        <div class="feature-tags">
+                            <span class="tag"><i class="fas fa-check"></i> Full Farming</span>
+                            <span class="tag"><i class="fas fa-bolt"></i> Terpercaya</span>
+                            <span class="tag"><i class="fas fa-shield-alt"></i> Aman 100%</span>
+                        </div>
+                        <p class="desc-text">Pilih durasi joki yang kamu inginkan di bawah ini.</p>
+
+                        <div class="daily-counter">
+                            <button class="btn-qty" onclick="updateDaily(-1)"><i class="fas fa-minus"></i></button>
+                            <input type="number" id="daily-input" class="input-days" value="1" min="1" readonly>
+                            <button class="btn-qty" onclick="updateDaily(1)"><i class="fas fa-plus"></i></button>
+                            <span style="color:var(--aqua-primary); margin-left:8px; font-weight:bold;">Hari</span>
+                        </div>
+
+                        <div class="total-display">
+                            Total: <span id="total-daily-price" style="color:var(--aqua-secondary); font-size:1.4rem;">Rp 5.000</span>
+                        </div>
+
+                        <a id="btn-daily-order" href="https://wa.me/6282116359852?text=Halo%20Admin%2C%20saya%20mau%20order%20JOKI%20HARIAN%20untuk%201%20Hari.%20Total%20Rp%205.000" target="_blank" class="btn-card">Order Joki Harian</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION BEFORE FOOTER -->
+    <div class="reviews-footer">
+        <div class="container">
+            <h2 class="reviews-title">ULASAN PELANGGAN KAMI</h2>
+            <div class="reviews-container">
+                <div class="reviews-track" id="reviews-track">
+                    <!-- Review 1 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-name">Angga Pratama</div>
+                            <div class="review-rating">
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            "Element Rod yang saya beli benar-benar worth it! Prosesnya cepat dan adminnya ramah. Gameplay langsung nge-gas setelah pakai rod ini!"
+                        </div>
+                        <div class="review-date">3 hari yang lalu</div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-name">Rina Sari</div>
+                            <div class="review-rating">
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star-half-alt star half"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            "Joki harian 7 hari, akun saya naik level dengan cepat! Admin sangat profesional dan selalu update progress. Highly recommended!"
+                        </div>
+                        <div class="review-date">1 minggu yang lalu</div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-name">Budi Santoso</div>
+                            <div class="review-rating">
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            "Ghostfin Rod nya original banget! Tidak seperti seller lain yang kadang fake. Pelayanan cepat, respon kurang dari 5 menit. Mantap!"
+                        </div>
+                        <div class="review-date">5 hari yang lalu</div>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-name">Siti Aisyah</div>
+                            <div class="review-rating">
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            "Singularity Bait benar-benar meningkatkan chance shiny fish saya! Dalam 2 hari dapat 3 shiny. Terima kasih Ripky Store!"
+                        </div>
+                        <div class="review-date">2 minggu yang lalu</div>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-name">Hendra Wijaya</div>
+                            <div class="review-rating">
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star-half-alt star half"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            "Bamboo Rod sesuai deskripsi, luck 760% terasa banget! Fishing jadi lebih menyenangkan. Next order mau coba yang Element Rod."
+                        </div>
+                        <div class="review-date">4 hari yang lalu</div>
+                    </div>
+
+                    <!-- Review 6 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-name">Dewi Lestari</div>
+                            <div class="review-rating">
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            "Proses aman 100%! Tidak perlu khawatir data akun bocor. Admin Ripky Store sangat terpercaya. Sudah 3x order dan selalu puas."
+                        </div>
+                        <div class="review-date">1 minggu yang lalu</div>
+                    </div>
+
+                    <!-- Review 7 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-name">Ahmad Fauzi</div>
+                            <div class="review-rating">
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            "Best seller untuk joki Fish It! Harga kompetitif, kualitas premium, dan pelayanan super cepat. Pantas dapat rating 5 bintang!"
+                        </div>
+                        <div class="review-date">3 hari yang lalu</div>
+                    </div>
+
+                    <!-- Duplicate reviews for seamless scrolling -->
+                    <!-- Review 1 (Duplicate) -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-name">Angga Pratama</div>
+                            <div class="review-rating">
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            "Element Rod yang saya beli benar-benar worth it! Prosesnya cepat dan adminnya ramah. Gameplay langsung nge-gas setelah pakai rod ini!"
+                        </div>
+                        <div class="review-date">3 hari yang lalu</div>
+                    </div>
+
+                    <!-- Review 2 (Duplicate) -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-name">Rina Sari</div>
+                            <div class="review-rating">
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star-half-alt star half"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            "Joki harian 7 hari, akun saya naik level dengan cepat! Admin sangat profesional dan selalu update progress. Highly recommended!"
+                        </div>
+                        <div class="review-date">1 minggu yang lalu</div>
+                    </div>
+
+                    <!-- Review 3 (Duplicate) -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-name">Budi Santoso</div>
+                            <div class="review-rating">
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                                <i class="fas fa-star star"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            "Ghostfin Rod nya original banget! Tidak seperti seller lain yang kadang fake. Pelayanan cepat, respon kurang dari 5 menit. Mantap!"
+                        </div>
+                        <div class="review-date">5 hari yang lalu</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-logo">
+                    <img src="https://ngoprek.xyz/u/r/denz.jpg" alt="Ripky Store Logo" class="footer-logo-img">
+                    <span class="footer-logo-text">Ripky STORE</span>
+                </a>
+                
+                <p class="footer-description">
+                    Premium Jasa Joki Game Fish It dengan layanan terbaik, proses cepat, dan keamanan 100% terjamin. 
+                    Tingkatkan pengalaman gaming Anda sekarang juga!
+                </p>
+                
+                <div class="social-links">
+                    <a href="https://wa.me/6282116359852" target="_blank" class="social-link">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="mailto:admin@Ripkystore.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Ripky Store. All Rights Reserved. | Premium Fish It Joki Service
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({ 
+            once: true, 
+            offset: 50, 
+            duration: 600,
+            easing: 'ease-out',
+            disable: window.innerWidth < 768
+        });
+
+        // Mobile Menu
+        const menuToggle = document.getElementById('mobile-menu');
+        const navUl = document.getElementById('nav-ul');
+        
+        menuToggle.addEventListener('click', () => {
+            navUl.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navUl.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // --- SIMPLE BUBBLE LOADING ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const loadingScreen = document.getElementById('bubble-loading');
+            const progressBar = document.getElementById('progress-bar');
+            const loadingText = document.getElementById('loading-text');
+            const bubblesWrapper = document.getElementById('bubbles-wrapper');
+
+            // Create bubbles only
+            for(let i = 0; i < 40; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble-load');
+                const size = Math.random() * 40 + 10;
+                const startX = Math.random() * 100;
+                const endX = startX + (Math.random() * 30 - 15);
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 15;
+                
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.setProperty('--startX', `${startX}vw`);
+                bubble.style.setProperty('--endX', `${endX}vw`);
+                bubble.style.animationDuration = `${duration}s`;
+                bubble.style.animationDelay = `${delay}s`;
+                
+                bubblesWrapper.appendChild(bubble);
+            }
+
+            // Loading messages
+            const loadingMessages = [
+                "> Memuat lingkungan bawah laut...",
+                "> Menciptakan gelembung...",
+                "> Menyiapkan antarmuka...",
+                "> Hampir selesai..."
+            ];
+
+            let progress = 0;
+            let messageIndex = 0;
+
+            // Loading animation
+            const loadingInterval = setInterval(() => {
+                if (progress >= 100) {
+                    clearInterval(loadingInterval);
+                    
+                    // Finish loading and show welcome popup
+                    setTimeout(() => {
+                        loadingScreen.classList.add('loaded');
+                        document.body.style.overflow = 'auto';
+                        
+                        // Show welcome popup after 300ms
+                        setTimeout(() => {
+                            document.getElementById('welcome-popup').classList.add('active');
+                        }, 300);
+                    }, 500);
+                    
+                } else {
+                    progress += 1;
+                    progressBar.style.width = `${progress}%`;
+                    
+                    // Update loading text every 25%
+                    if (progress % 25 === 0 && messageIndex < loadingMessages.length) {
+                        loadingText.innerText = loadingMessages[messageIndex];
+                        messageIndex++;
+                    }
+                }
+            }, 30);
+
+            // Disable scroll during loading
+            document.body.style.overflow = 'hidden';
+        });
+
+        // --- WELCOME POPUP FUNCTIONALITY ---
+        // Click outside to close
+        document.getElementById('welcome-popup').addEventListener('click', function(e) {
+            if(e.target === this) {
+                this.classList.remove('active');
+            }
+        });
+
+        // Close with Escape key
+        document.addEventListener('keydown', function(e) {
+            if(e.key === 'Escape') {
+                document.getElementById('welcome-popup').classList.remove('active');
+            }
+        });
+
+        // --- SCRIPT LOGIC JOKI HARIAN ---
+        function updateDaily(change) {
+            const pricePerDay = 5000;
+            const inputField = document.getElementById('daily-input');
+            const priceDisplay = document.getElementById('total-daily-price');
+            const orderBtn = document.getElementById('btn-daily-order');
+
+            let currentDays = parseInt(inputField.value);
+            let newDays = currentDays + change;
+
+            if (newDays < 1) newDays = 1;
+            inputField.value = newDays;
+
+            let totalPrice = newDays * pricePerDay;
+            let formattedPrice = "Rp " + totalPrice.toLocaleString('id-ID');
+            priceDisplay.innerText = formattedPrice;
+
+            let message = `Halo Admin, saya mau order JOKI HARIAN untuk ${newDays} Hari. Total ${formattedPrice}`;
+            let waLink = `https://wa.me/6282116359852?text=${encodeURIComponent(message)}`;
+            
+            orderBtn.href = waLink;
+        }
+
+        // Reviews scrolling animation optimization
+        const reviewsTrack = document.getElementById('reviews-track');
+        
+        // Duplicate reviews for infinite scrolling effect
+        function duplicateReviews() {
+            const reviewCards = reviewsTrack.querySelectorAll('.review-card');
+            const originalCount = 7; // Original reviews count
+            
+            // Only duplicate if needed
+            if (reviewCards.length <= originalCount * 2) {
+                const firstThreeReviews = Array.from(reviewCards).slice(0, 3);
+                firstThreeReviews.forEach(review => {
+                    const clone = review.cloneNode(true);
+                    reviewsTrack.appendChild(clone);
+                });
+            }
+        }
+
+        // Initialize reviews
+        duplicateReviews();
+
+        // Pause animation on hover
+        reviewsTrack.addEventListener('mouseenter', () => {
+            reviewsTrack.style.animationPlayState = 'paused';
+        });
+
+        reviewsTrack.addEventListener('mouseleave', () => {
+            reviewsTrack.style.animationPlayState = 'running';
+        });
+
+        // Optimasi scroll performance
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    const navbar = document.querySelector('.navbar-card');
+                    const scrollPosition = window.pageYOffset;
+                    
+                    if (scrollPosition > 100) {
+                        navbar.style.transform = 'translateY(-5px)';
+                        navbar.style.boxShadow = '0 10px 30px rgba(0, 224, 255, 0.2)';
+                    } else {
+                        navbar.style.transform = 'translateY(0)';
+                        navbar.style.boxShadow = 'none';
+                    }
+                    
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Optimize images loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.loading = 'lazy';
+            });
+        });
+    </script>
+
+</body>
+</html>
